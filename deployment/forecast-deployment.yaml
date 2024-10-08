@@ -1,0 +1,25 @@
+# forecast-deployment.yaml
+# Deployment to ensure the pods are continuously managed and replicated.
+# replicas: 10 to specify that 10 instances of the forecast pod should be running - one per each device
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: forecast-deployment
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: forecast-pod # Defines the pods that belong to this deployment. Needs to match with the pod metadata label. 
+  template:
+    metadata:
+      labels:
+        app: forecast-pod
+    spec:
+      containers:
+      - name: forecast
+        image: hesgelsds/k8s-forecast:1.0.2  # Replace with your Docker image name
+        imagePullPolicy: Always        # Force the pull of the container image - used for testing purposes
+        env:
+        - name: REDIS_HOST
+          value:  # To be Filled

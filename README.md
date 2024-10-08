@@ -118,3 +118,16 @@ If the order isn't followed, there will be several errors happening. `Redis` nee
 4. Finish the kubernetes deployment files
 5. Deploy the application
 6. Build a Grafana dashboard to visualize the forecasted data.
+
+### Grafana Dashboard Configurations
+
+Build the dashboard by copying the following photos:
+
+Time Range:
+![time range](time-range.png)
+
+Forecated Data:
+![forecasted range](forecasted_data.png)
+
+Real Data:
+![real data](real_data.png)
