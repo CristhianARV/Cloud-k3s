@@ -69,6 +69,14 @@ NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   3h37m
 ```
 
+#### Creating a Secret Key
+
+```bash
+kubectl create secret generic aws-secret \
+  --from-literal=AWS_ACCESS_KEY_ID=<Your access key> \
+  --from-literal=AWS_SECRET_ACCESS_KEY=<your secret key>
+```
+
 You are ready to deploy services to your cluster.
 
 ### Deployment Files
