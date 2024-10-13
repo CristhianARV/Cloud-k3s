@@ -17,15 +17,15 @@ Kind (Kubernetes in Docker) is a tool designed to facilitate the running of loca
 
 ### Data Retrieval
 
-Data Retrieval is a Python program that reads an S3 bucket, retrieves and reads a CSV file, and writes the data into a distributed Redis database. **This program is run only once to ingest data into the system**. It the 10 devices from the CSV and inserts them into Redis as a RedisTimeSeries dataset. It also creates a Redis Queue with Device ID, which is used to retrieve from the RedisTimeSeries  (if possible, it sets a key-value structure in the queue [id, RedisTimeSeries]).
+Data Retrieval is a Python program that reads an S3 bucket, retrieves and reads a CSV file, and writes the data into a Redis database. **This program is run only once to ingest data into the system**. It the 10 devices from the CSV and inserts them into Redis as a RedisTimeSeries dataset. It also creates a Redis Queue with Device ID, which is used to retrieve from the RedisTimeSeries  (if possible, it sets a key-value structure in the queue [id, RedisTimeSeries]).
 
 ### Forecast
 
-Based on the data provided, forecasts X amounts of days in the future. It utilizes LSTM to forecast based on historical data. It will create as many instances as devices in the database (in this case, it will be capped at 10 instances/devices). Every minute, it will forecast the following day, storing the result in the database as a RedisTimeSeries.
+This module uses the forecast LSTM algorithm. Assuming we are at time t (in minutes), this module accepts as input the power consumed at time t - 15 and predicts the power consumption at time t + 15. We will deploy as many containers of this module as there are households (smart meters).
 
 ### Redis
 
-Redis is an in-memory database largely used as a cache. In this case, we’ll use a document store to store historical and forecasted data. It is replicated and provides an automated way to replicate data across instances. 
+Redis is an in-memory database largely used as a cache. In this case, we’ll use a document to store historical and forecasted data. It is replicated and provides an automated way to replicate data across instances. 
 
 ### Grafana
 
