@@ -11,7 +11,7 @@ In this exercise, students will deploy a Kubernetes cluster locally to manage an
 
 ## Kubernetes in Docker (Kind)
 
-Kind (Kubernetes in Docker) is a tool designed to facilitate the running of local Kubernetes clusters using Docker containers as nodes.  It simplifies the process of setting up a Kubernetes cluster by eliminating the need for virtual machines or cloud infrastructure, making it accessible and efficient for developers and testers. With kind, clusters can be created, managed, and deleted using straightforward commands, allowing for quick iterations and experiments. Its flexibility supports multi-node clusters, enabling realistic testing scenarios and the development of distributed applications in an environment closely resembling production.
+Kind (Kubernetes in Docker) is a tool designed to facilitate the running of local Kubernetes clusters using Docker containers as nodes.  It simplifies the process of setting up a Kubernetes cluster by eliminating the need for virtual machines or cloud infrastructure, making it accessible and efficient for developers and testers. With kind, clusters can be created, managed, and deleted using straightforward commands, allowing for quick iterations and experiments. Its flexibility supports multi-node clusters, enabling realistic testing scenarios and the development of distributed applications in an environment closely resembling production. For further detail you can read this [web site](https://kind.sigs.k8s.io/)
 
 ## Programs
 
@@ -21,7 +21,7 @@ Data Retrieval is a Python program that reads an S3 bucket, retrieves and reads 
 
 ### Forecast
 
-Based on the data provided, forecasts X amounts of days in the future. It utilizes LSTM to forecast based on historical data from Groupe E. It will create as many instances as devices in the database (in this case, it will be capped at 10 instances/devices). Every minute, it will forecast the following day, storing the result in the database as a RedisTimeSeries.
+Based on the data provided, forecasts X amounts of days in the future. It utilizes LSTM to forecast based on historical data. It will create as many instances as devices in the database (in this case, it will be capped at 10 instances/devices). Every minute, it will forecast the following day, storing the result in the database as a RedisTimeSeries.
 
 ### Redis
 
