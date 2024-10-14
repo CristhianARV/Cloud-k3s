@@ -127,7 +127,19 @@ If the order isn't followed, there will be several errors happening. `Redis` nee
 5. Deploy the application
 6. Build a Grafana dashboard to visualize the forecasted data.
 
-### Grafana Dashboard Configurations
+## Load Balancer
+
+Kubernetes provides Load Balancing capabilities natively. This permits the distribution of load between several replicas of the same pod. But, as we are deploying using kind, to access this ability we have to create a port-forward between the service and the host device:
+
+```bash
+kubectl port-forward service/grafana 3000:3000
+```
+
+In this case we only require one port forward, between the grafana service (the frontend to this service), and the host. Once this PF is established, we are able to access the grafana interface on `http://localhost:3000`.
+
+
+
+## Grafana Dashboard Configurations
 
 Build the dashboard by copying the following photos:
 

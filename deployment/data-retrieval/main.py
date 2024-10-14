@@ -36,7 +36,7 @@ def check_redis_connection():
 def read_partial_csv(bucket_name, object_name, n_col=11):
     """Reads a CSV from S3, yielding rows with the specified number of columns."""
 
-    logger.info(f"Reading CSV from S3 bucket: {bucket_name}, object: {object_name}")
+    logger.info(f"Reading CSV from S3 bucket: {bucket_name}")
     response = s3_client.get_object(Bucket=bucket_name, Key=object_name)
 
     # Use a generator to read lines without loading the whole file
