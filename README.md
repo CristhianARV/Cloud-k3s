@@ -7,7 +7,7 @@ In this exercise, students will deploy a Kubernetes cluster locally to manage an
 The electrical consumption is reprsented by a a CSV file stored on S3. This CSV file has 11 columns. The first column is the time stamp. The other ten columns each represent the power measurements (P) of a smart meter's electricity consumption. Measurements are taken every 15 minutes. A row in the CSV file therefore corresponds to the power measurement at a given time t (HH:00, HH:15, HH:30. HH:45) for the 10 smart meters. The measures cover the period 04.01.2021 - 31.12.2022.
 
 
-## Example Architecture
+## Architecture
 
 ![K8S Architecture to Be Deployed](KubernetesClass.png)
 
