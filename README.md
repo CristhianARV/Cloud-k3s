@@ -10,7 +10,7 @@ The application will be deployed on a local kubernetes cluster created using the
 
 ## Kind
 
-Kind (Kubernetes in Docker) is a tool designed to facilitate the running of local Kubernetes clusters using Docker containers as nodes.  It simplifies the process of setting up a Kubernetes cluster by eliminating the need for virtual machines or cloud infrastructure, making it accessible and efficient for developers and testers. With kind, clusters can be created, managed, and deleted using straightforward commands, allowing for quick iterations and experiments. Its flexibility supports multi-node clusters, enabling realistic testing scenarios and the development of distributed applications in an environment closely resembling production. For further detail you can read this [web site](https://kind.sigs.k8s.io/)
+Kind (Kubernetes in Docker) is a tool designed to facilitate the running of local Kubernetes clusters using Docker containers as nodes.  It simplifies the process of setting up a Kubernetes cluster by eliminating the need for virtual machines or cloud infrastructure, making it accessible and efficient for developers and testers. With kind, clusters can be created, managed, and deleted using straightforward commands, allowing for quick iterations and experiments. Its flexibility supports multi-node clusters, enabling realistic testing scenarios and the development of distributed applications in an environment closely resembling production. For further detail you can read this [web site](https://kind.sigs.k8s.io/).
 
 ## The application
 
