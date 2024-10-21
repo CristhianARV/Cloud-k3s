@@ -11,21 +11,21 @@ In this exercise, students will deploy a Kubernetes cluster locally to manage an
 
 ## Kubernetes in Docker (Kind)
 
-Kind (Kubernetes in Docker) is a tool designed to facilitate the running of local Kubernetes clusters using Docker containers as nodes.  It simplifies the process of setting up a Kubernetes cluster by eliminating the need for virtual machines or cloud infrastructure, making it accessible and efficient for developers and testers. With kind, clusters can be created, managed, and deleted using straightforward commands, allowing for quick iterations and experiments. Its flexibility supports multi-node clusters, enabling realistic testing scenarios and the development of distributed applications in an environment closely resembling production. For further detail you can read this [web site](https://kind.sigs.k8s.io/)
+Kind (Kubernetes in Docker) is a tool designed to facilitate the running of local Kubernetes clusters using Docker containers as nodes.  It simplifies the process of setting up a Kubernetes cluster by eliminating the need for virtual machines or cloud infrastructure, making it accessible and efficient for developers and testers. With kind, clusters can be created, managed, and deleted using straightforward commands, allowing for quick iterations and experiments. Its flexibility supports multi-node clusters, enabling realistic testing scenarios and the development of distributed applications in an environment closely resembling production.
 
 ## Programs
 
 ### Data Retrieval
 
-Data Retrieval is a Python program that reads an S3 bucket, retrieves and reads a CSV file, and writes the data into a Redis database. **This program is run only once to ingest data into the system**. It the 10 devices from the CSV and inserts them into Redis as a RedisTimeSeries dataset. It also creates a Redis Queue with Device ID, which is used to retrieve from the RedisTimeSeries  (if possible, it sets a key-value structure in the queue [id, RedisTimeSeries]).
+Data Retrieval is a Python program that reads an S3 bucket, retrieves and reads a CSV file, and writes the data into a distributed Redis database. **This program is run only once to ingest data into the system**. It the 10 devices from the CSV and inserts them into Redis as a RedisTimeSeries dataset. It also creates a Redis Queue with Device ID, which is used to retrieve from the RedisTimeSeries  (if possible, it sets a key-value structure in the queue [id, RedisTimeSeries]).
 
 ### Forecast
 
-This module uses the forecast LSTM algorithm. Assuming we are at time t (in minutes), this module accepts as input the power consumed at time t - 15 and predicts the power consumption at time t + 15. We will deploy as many containers of this module as there are households (smart meters).
+Based on the data provided, forecasts X amounts of days in the future. It utilizes LSTM to forecast based on historical data from Groupe E. It will create as many instances as devices in the database (in this case, it will be capped at 10 instances/devices). Every minute, it will forecast the following day, storing the result in the database as a RedisTimeSeries.
 
 ### Redis
 
-Redis is an in-memory database largely used as a cache. In this case, we’ll use a document to store historical and forecasted data. It is replicated and provides an automated way to replicate data across instances. 
+Redis is an in-memory database largely used as a cache. In this case, we’ll use a document store to store historical and forecasted data. It is replicated and provides an automated way to replicate data across instances. 
 
 ### Grafana
 
@@ -38,6 +38,7 @@ Grafana is an analytics visualization platform which will be used to visualize t
 ### Setup
 1. Clone this repository and create an account on [Docker Hub](https://hub.docker.com).
 2. Install [Docker](https://docs.docker.com/engine/install/) and [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
+3. Create a folder or a repository
 4. Create a [Kind configuration file](https://kind.sigs.k8s.io/docs/user/quick-start/#multi-node-clusters) composed of one control-plane node, and 5 worker nodes
 5. Create a cluster using the configuration file
 6. Setup kubectl - the default Kubernetes CLI tool - [to interact with the Kind Cluster](https://kind.sigs.k8s.io/docs/user/quick-start/#interacting-with-your-cluster).
@@ -135,8 +136,6 @@ kubectl port-forward service/grafana 3000:3000
 ```
 
 In this case we only require one port forward, between the grafana service (the frontend to this service), and the host. Once this PF is established, we are able to access the grafana interface on `http://localhost:3000`.
-
-
 
 ## Grafana Dashboard Configurations
 

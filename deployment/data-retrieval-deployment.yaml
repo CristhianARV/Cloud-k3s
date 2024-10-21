@@ -20,15 +20,9 @@ spec:
         - name: REDIS_HOST
           value: # To be Filled
         - name: AWS_ACCESS_KEY_ID
-          valueFrom:
-            secretKeyRef:
-              name: aws-secret
-              key: AWS_ACCESS_KEY_ID
+          # Fill in with the Secret key value
         - name: AWS_SECRET_ACCESS_KEY
-          valueFrom:
-            secretKeyRef:
-              name: aws-secret
-              key: AWS_SECRET_ACCESS_KEY
+          # Fill in with the Secret key value
       restartPolicy: Never
 
 # There is no service for this Job, because the job does not need to be accessed externally or expose any ports. 

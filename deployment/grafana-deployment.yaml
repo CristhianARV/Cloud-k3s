@@ -34,16 +34,10 @@ data:
       options:
         path: /var/lib/grafana/dashboards
 
-  custom-dashboard.json: |
-    {
-      "annotations": {
-        "list": []
-      },
-      "panels": [],
-      "title": "Custom Dashboard",
-      "version": 1
-    }
 ---
+# A K8S cluster resource that represetns a piece of storage in the cluster.
+# It is a volume that can be mounted to a pod.
+# In this case, it is local, as it is mounted to the hostPath /mnt/data.
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -56,6 +50,8 @@ spec:
   hostPath:
     path: "/mnt/data"
 ---
+# A request for storage. Abstracts the need to know the underlying storage technology.
+# It is automtically bound (connected) to a PersistentVolume, which in this case is the grafana-pv.
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -121,4 +117,4 @@ spec:
   - port: 3000
     targetPort: 3000
   selector:
-    app: grafana-pod
+    # Fill with the correct label
