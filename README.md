@@ -75,9 +75,9 @@ You are ready to deploy services to your cluster.
 
 ### Deployment Files
 
-Kubernetes services can be deployed using Deployment Files, `YAML` files that describe how and where a service should be deployed. In this repositiory you have a folder called `code` which has the following structure:
+Kubernetes services can be deployed using Deployment Files, `YAML` files that describe how and where a service should be deployed. In this repositiory you have a folder called `deployment` which has the following structure:
 ```bash
-|- code/
+|- depèloyment/
 |---- data-retreival/
 |---- forcast/
 |---- data-retrieval-deployment.yaml
@@ -86,9 +86,7 @@ Kubernetes services can be deployed using Deployment Files, `YAML` files that de
 |---- redis-deployment.yaml
 ```
 
-The `data-retrieval-deployment.yaml` and `forecast-deployment.yaml` files are to be completed.
-
-### Code
+The yaml files are incomplete and need to be completed before any deployments.
 
 Both the `data-retrieval` and `forecast` folders have the following structure:
 
@@ -99,18 +97,9 @@ Both the `data-retrieval` and `forecast` folders have the following structure:
 |---- Dockerfile
 ```
 
-## Deployment
-
-The application needs to be deployed in the following order:
-1. Redis + Grafana
-2. Data Retrieval - It needs to finish before the next step
-3. Forecast
-
-If the order isn't followed, there will be several errors happening. `Redis` needs to be the first to be deployed as both the `Data-Retrieval` and `Forecast` are dependant on it. 
-
 ## Tasks
 
-### Task 1: redis deployment
+### Task 1: Redis deployment
 
 1. Fill the redis-deployment.yaml
 2. Dploy the redis module using kubectl.
