@@ -12,6 +12,8 @@ spec:
       labels:
         app: data-retrieval-pod
     spec:
+      nodeSelector:
+        role: "infra"  # Ensure the pod runs only on control-plane node
       containers:
       - name: data-retrieval
         image: cristhianron/data-retrival:1.0.0  # Replace with your Docker image name
