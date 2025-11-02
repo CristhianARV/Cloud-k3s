@@ -7,7 +7,7 @@ kind: Deployment
 metadata:
   name: forecast-deployment
 spec:
-  replicas: 10
+  replicas: 7
   selector:
     matchLabels:
       app: forecast-pod # Defines the pods that belong to this deployment. Needs to match with the pod metadata label. 
@@ -16,6 +16,8 @@ spec:
       labels:
         app: forecast-pod
     spec:
+      nodeSelector:
+        role: "forecast"  # Ensure the pod runs only on worker nodes
       containers:
       - name: forecast
         image: cristhianron/forecast:1.0.0  # Replace with your Docker image name
