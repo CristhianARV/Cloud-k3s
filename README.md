@@ -1,5 +1,10 @@
 # K8S-Lab
 
+```bash
+source kubernetes/bin/activate
+uv pip install -r deployment/data-retrieval/requirements.txt
+```
+
 ## GOAL
 
 In this exercise, students will locally deploy a Kubernetes cluster. This K8S cluster will be used to manage an application which retrieves and stores electrical consumption data, forecasts future consumption, and presents both historical and projected consumption trends.
@@ -108,6 +113,8 @@ The data-retrieval module must access the S3 object storage to read the CSV file
 kubectl create secret generic <name-of-the-secrets> \
   --from-literal=AWS_ACCESS_KEY_ID=<Your access key> \
   --from-literal=AWS_SECRET_ACCESS_KEY=<your secret key>
+
+  name-of-the-secrets>: aws-creds (use in yaml file)
 ```
 1. Build the Data Retrieval docker and push it to your dockerhub account
 2. Complete the file "data-retrieval-deployment.yaml"
