@@ -77,6 +77,8 @@ spec:
       labels:
         app: grafana-pod
     spec:
+      nodeSelector:
+        role: "infra"  # Ensure the pod runs only on control-plane node
       containers:
       - name: grafana
         image: grafana/grafana:latest
