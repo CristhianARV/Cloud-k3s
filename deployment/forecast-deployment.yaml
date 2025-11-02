@@ -17,7 +17,7 @@ spec:
         app: forecast-pod
     spec:
       nodeSelector:
-        role: "forecast"  # Ensure the pod runs only on worker nodes
+        workload: "forecast"  # Ensure the pod runs only on worker nodes
       containers:
       - name: forecast
         image: cristhianron/forecast:1.0.0  # Replace with your Docker image name
