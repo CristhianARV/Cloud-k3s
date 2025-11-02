@@ -35,7 +35,7 @@ data:
         path: /var/lib/grafana/dashboards
 
 ---
-# A K8S cluster resource that represetns a piece of storage in the cluster.
+# A K8S cluster resource that represents a piece of storage in the cluster.
 # It is a volume that can be mounted to a pod.
 # In this case, it is local, as it is mounted to the hostPath /mnt/data.
 apiVersion: v1
@@ -68,7 +68,7 @@ kind: Deployment
 metadata:
   name: grafana-deployment
 spec:
-  replicas: 3  # Set to 1 due to ReadWriteOnce constraint
+  replicas: 1  # Set to 1 due to ReadWriteOnce constraint
   selector:
     matchLabels:
       app: grafana-pod
@@ -118,3 +118,4 @@ spec:
     targetPort: 3000
   selector:
     # Fill with the correct label
+    app: grafana-pod
